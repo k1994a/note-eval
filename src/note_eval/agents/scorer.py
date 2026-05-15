@@ -7,11 +7,11 @@ from typing import Literal
 from pydantic import BaseModel
 
 from ..llm import MAX_CONCURRENT_LLM_CALLS, LLMClient
+from ..prompts import SCORER
 from ..schemas.note import Note
 from ..schemas.rubric import Rubric, RubricItem
 from ..schemas.score import Score, ScoreValue
 from ..storage.cache import Cache
-from ._prompts import load_prompt
 
 log = logging.getLogger(__name__)
 
@@ -28,8 +28,7 @@ class _ScorerLLMResponse(BaseModel):
 
 
 def _format_user_prompt(note: Note, item: RubricItem) -> str:
-    template = load_prompt("scorer.txt")
-    return template.format(
+    return SCORER.format(
         rubric_item_name=item.name,
         rubric_item_description=item.description,
         anchor_0=item.anchors.score_0,

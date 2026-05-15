@@ -7,9 +7,9 @@ from pydantic import BaseModel, field_validator
 
 from .. import aggregation
 from ..llm import LLMClient
+from ..prompts import RECENT
 from ..schemas.score import Score
 from ..schemas.summary import MonthlySummary, RecentSummary
-from ._prompts import load_prompt
 
 _SYSTEM = "You summarize the last 30 days. Always return exactly two bullets per category."
 
@@ -72,7 +72,7 @@ def summarize_recent(
         if ms.month in window_months
     ]
 
-    user = load_prompt("recent.txt").format(
+    user = RECENT.format(
         window_start=start.isoformat(),
         window_end=now.isoformat(),
         note_count=len({s.note_id for s in in_window}),

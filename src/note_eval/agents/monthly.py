@@ -6,11 +6,11 @@ from pydantic import BaseModel
 
 from .. import aggregation
 from ..llm import LLMClient
+from ..prompts import MONTHLY
 from ..schemas.note import Note
 from ..schemas.rubric import Rubric
 from ..schemas.score import Score
 from ..schemas.summary import MonthlySummary, RubricItemSummary
-from ._prompts import load_prompt
 
 _SYSTEM = "You are summarizing one author's monthly performance. Return structured JSON."
 
@@ -72,7 +72,7 @@ def summarize_month(
 
     note_count = len({s.note_id for s in scores})
 
-    user = load_prompt("monthly.txt").format(
+    user = MONTHLY.format(
         month=month,
         event_type=event_type,
         note_count=note_count,

@@ -6,8 +6,8 @@ from pydantic import BaseModel
 
 from .. import aggregation
 from ..llm import LLMClient
+from ..prompts import TREND
 from ..schemas.summary import MonthlySummary, RubricItemTrend, Trend
-from ._prompts import load_prompt
 
 _SYSTEM = "You narrate monthly trends faithfully against computed means. Return structured JSON."
 
@@ -61,7 +61,7 @@ def analyze_trend(
         for ms in sorted(monthly_summaries, key=lambda m: m.month)
     ]
 
-    user = load_prompt("trend.txt").format(
+    user = TREND.format(
         monthly_means_table=json.dumps(means_by_item, indent=2, default=str),
         directions=json.dumps(directions, indent=2),
         monthly_summaries=json.dumps(monthly_context, indent=2, default=str),
