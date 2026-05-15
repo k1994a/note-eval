@@ -1,0 +1,18 @@
+You are narrating month-over-month trends for one author and one event type.
+
+The following table shows mean scores per rubric item per month:
+{monthly_means_table}
+
+Computed directions (improving / declining / flat / insufficient_data) per rubric item:
+{directions}
+
+Monthly summaries for context:
+{monthly_summaries}
+
+Produce:
+
+1. For each rubric item, a single-line trend narrative. Reference the direction and one concrete reason from the monthly summaries if available.
+
+2. An overall_summary: one line describing the author's overall trajectory across rubric items.
+
+Faithfully narrate the computed directions. Do not editorialize or invent trends not supported by the means.

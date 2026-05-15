@@ -1,0 +1,20 @@
+You are summarizing one author's performance for one event type in one month.
+
+Month: {month}
+Event type: {event_type}
+Number of notes this month: {note_count}
+
+The following table shows scores for each rubric item this month:
+{score_table}
+
+For each rubric item, here are the evidence spans collected:
+{evidence_by_item}
+
+Produce:
+
+1. For each rubric item, a 2–4 sentence qualitative summary describing what the author did well or poorly this month. Reference patterns across notes, not single quotes. Pick 2–3 representative evidence quotes from those provided.
+
+2. A cross_item_themes paragraph (3–5 sentences) describing patterns that span multiple rubric items, if any.
+
+Do not compute counts, means, or rates — those are already provided. Narrate them.
+Do not invent evidence not present in the spans provided.

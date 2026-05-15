@@ -1,0 +1,43 @@
+[project]
+name = "note-eval"
+version = "0.1.0"
+description = "Pipeline for evaluating qualitative notes against a structured rubric."
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+dependencies = [
+    "langgraph>=0.2",
+    "openai>=1.40",
+    "pydantic>=2.5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-mock>=3.12", "ruff>=0.6"]
+
+[project.scripts]
+note-eval = "note_eval.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"note_eval.prompts" = ["*.txt"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "W"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]

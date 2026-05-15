@@ -1,0 +1,71 @@
+{
+  "version": "1.0.0",
+  "items": [
+    {
+      "id": "item_001",
+      "name": "Captures concrete observations",
+      "description": "The note records specific observed behaviors rather than vague impressions.",
+      "applies_to_event_types": ["type_a", "type_b"],
+      "anchors": {
+        "score_0": "No concrete observations; only generalities or judgments.",
+        "score_1": "Some observations but mixed with vague language or missing specifics.",
+        "score_2": "Multiple specific, behavioral observations grounded in what was seen or heard."
+      }
+    },
+    {
+      "id": "item_002",
+      "name": "Balances inquiry and assertion",
+      "description": "The note reflects two-way dialogue rather than a one-sided directive.",
+      "applies_to_event_types": ["type_a", "type_b", "type_c"],
+      "anchors": {
+        "score_0": "Entirely directive; no questions or solicitation of the other party's view.",
+        "score_1": "Mostly directive with occasional surface-level questions.",
+        "score_2": "Clear back-and-forth: substantive questions paired with thoughtful assertions."
+      }
+    },
+    {
+      "id": "item_003",
+      "name": "Specifies next steps with owners",
+      "description": "Concrete actions are captured with named owners and timeframes.",
+      "applies_to_event_types": ["type_a", "type_b", "type_c"],
+      "anchors": {
+        "score_0": "No next steps, or vague aspirations without owners.",
+        "score_1": "Next steps named but missing owners or timeframes.",
+        "score_2": "Specific actions, named owners, and clear timeframes."
+      }
+    },
+    {
+      "id": "item_004",
+      "name": "Links to prior commitments",
+      "description": "Follows up on or references commitments from previous conversations.",
+      "applies_to_event_types": ["type_c"],
+      "anchors": {
+        "score_0": "No reference to anything prior; treated as standalone.",
+        "score_1": "Acknowledges a prior topic but does not engage with what was committed.",
+        "score_2": "Explicitly revisits prior commitments and discusses progress against them."
+      }
+    },
+    {
+      "id": "item_005",
+      "name": "Checks for understanding",
+      "description": "Confirms alignment before moving on or closing the discussion.",
+      "applies_to_event_types": ["type_b", "type_c"],
+      "anchors": {
+        "score_0": "No confirmation; assumes alignment.",
+        "score_1": "Asks a yes/no confirmation without inviting elaboration.",
+        "score_2": "Invites the other party to restate or expand on the agreement."
+      }
+    },
+    {
+      "id": "item_006",
+      "name": "Summarizes outcomes",
+      "description": "Closes with an explicit summary of what was discussed and decided.",
+      "applies_to_event_types": ["type_a", "type_b", "type_c"],
+      "anchors": {
+        "score_0": "No closing summary.",
+        "score_1": "Brief mention of one outcome without full recap.",
+        "score_2": "Clear summary of topics covered, decisions made, and open items."
+      }
+    }
+  ]
+}
