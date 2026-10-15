@@ -25,7 +25,7 @@ The orchestrator routes every query to one of three paths.
 
 For questions where the target is unknown but the concept is known.
 
-- Pre-filter on `attuid` + date range
+- Pre-filter on `rep_id` + date range
 - Vector search over the filtered set
 - `k` set by the orchestrator based on scope
 
@@ -39,7 +39,7 @@ query with bound parameters.
 ```sql
 SELECT session_date, notes, action_items
 FROM coaching_sessions
-WHERE attuid = @rep
+WHERE rep_id = @rep
   AND session_date >= @start
 ORDER BY session_date;
 ```
@@ -100,7 +100,7 @@ expressed as a column value.
 - **Topic search without a keyword** — *"who did I talk to about improving discovery"*
 - **Similarity to an exemplar** — *"find sessions like this one"* (query is a document)
 - **Cross-rep pattern finding** — *"which reps are struggling with the same thing"*
-  (no attuid filter; the semantic match is the scope)
+  (no rep_id filter; the semantic match is the scope)
 - **Precedent lookup** — *"how have other managers coached someone weak on objection handling"*
 - **Self-audit** — *"have I been coaching enough on pipeline hygiene"* (pair with an exact
   count for the quantitative half)
@@ -146,7 +146,7 @@ Not building now. Revisit if the trigger condition appears.
 - **Multi-hop routing** — *"why did Sarah's close rate drop"* needs metrics *and* coaching,
   in order, with the second query shaped by the first. If the orchestrator must plan
   sequences rather than pick one lane, it may need a larger model.
-- **Summary compression dropping filters** — an attuid set eight turns ago going missing is
+- **Summary compression dropping filters** — a rep_id set eight turns ago going missing is
   inherited silently by every downstream component.
 - **Team-scope corpus size** — filter cardinality 1 → 15 moves the corpus from ~90 chunks to
   ~1,400. This is where tight `k` starts mattering. Know the `$top` ceiling before someone
